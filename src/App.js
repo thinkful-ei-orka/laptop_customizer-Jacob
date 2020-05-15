@@ -5,6 +5,8 @@ import React, { Component } from 'react';
 import slugify from 'slugify';
 
 import './App.css';
+import CustomList from './CustomList'
+import Header from './Header'
 
 // This object will allow us to
 // easily convert numbers into US dollar values
@@ -36,6 +38,9 @@ class App extends Component {
   };
 
   updateFeature = (feature, newValue) => {
+//This feature will stay inside App since Part and Cart need access to the 
+//function
+//function handles which item is selected
     const selected = Object.assign({}, this.state.selected);
     selected[feature] = newValue;
     this.setState({
@@ -45,10 +50,19 @@ class App extends Component {
 
   render() {
     const features = Object.keys(this.props.features).map((feature, idx) => {
-      const featureHash = feature + '-' + idx;
+    //features is obtaining an array of the keys of features  
+    //Then creates a map using the keys from props.features
+    const featureHash = feature + '-' + idx;
+    //creates a string containing the feature name and index
+    //value separated by a hash
       const options = this.props.features[feature].map(item => {
+      //Options generates the possible options for the particular
+      //feature.  Possibly needs to be stored in PartList
         const itemHash = slugify(JSON.stringify(item));
+        //creates a string containing the information for each option
+        //inside each feature
         return (
+        //generates the html for one part
           <div key={itemHash} className="feature__item">
             <input
               type="radio"
@@ -66,20 +80,23 @@ class App extends Component {
       });
 
       return (
+      //Generates the html for one partlist
         <fieldset className="feature" key={featureHash}>
           <legend className="feature__name">
             <h3>{feature}</h3>
           </legend>
           {options}
-        </fieldset>
+        </fieldset>//
       );
     });
 
     const summary = Object.keys(this.state.selected).map((feature, idx) => {
+    //generates summary of all the parts selected  
       const featureHash = feature + '-' + idx;
       const selectedOption = this.state.selected[feature];
 
       return (
+      //generates individual item on cart summary
         <div className="summary__option" key={featureHash}>
           <div className="summary__option__label">{feature} </div>
           <div className="summary__option__value">{selectedOption.name}</div>
@@ -91,6 +108,8 @@ class App extends Component {
     });
 
     const total = Object.keys(this.state.selected).reduce(
+    //generates the "total" component 
+
       (acc, curr) => acc + this.state.selected[curr].cost,
       0
     );
@@ -98,13 +117,16 @@ class App extends Component {
     return (
       <div className="App">
         <header>
-          <h1>ELF Computing | Laptops</h1>
+          <Header header="ELF Computing | Laptops" />
         </header>
         <main>
-          <form className="main__form">
-            <h2>Customize your laptop</h2>
-            {features}
-          </form>
+        {/* generates "Customize Laptop" section */}
+        <CustomList 
+          features={this.props.features}
+          selected={this.state.selected}
+          onSelected={this.updateFeature}
+        />
+          {/* generates the entire Card HTML*/}
           <section className="main__summary">
             <h2>Your cart</h2>
             {summary}

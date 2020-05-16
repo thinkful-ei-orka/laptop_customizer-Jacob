@@ -7,9 +7,8 @@ import slugify from 'slugify';
 import './App.css';
 import CustomList from './CustomList'
 import Header from './Header'
+import Cart from './Cart'
 
-// This object will allow us to
-// easily convert numbers into US dollar values
 const USCurrencyFormat = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD'
@@ -97,6 +96,10 @@ class App extends Component {
 
       return (
       //generates individual item on cart summary
+      //need to pass:  
+          //key=featureHash
+          //feature=feature
+          //selectedOption=this.state.selected[feature]
         <div className="summary__option" key={featureHash}>
           <div className="summary__option__label">{feature} </div>
           <div className="summary__option__value">{selectedOption.name}</div>
@@ -125,9 +128,12 @@ class App extends Component {
           features={this.props.features}
           selected={this.state.selected}
           onSelected={this.updateFeature}
+
         />
-          {/* generates the entire Card HTML*/}
-          <section className="main__summary">
+        <Cart 
+          selected={this.state.selected}
+        />
+          {/* <section className="main__summary">
             <h2>Your cart</h2>
             {summary}
             <div className="summary__total">
@@ -136,7 +142,7 @@ class App extends Component {
                 {USCurrencyFormat.format(total)}
               </div>
             </div>
-          </section>
+          </section> */}
         </main>
       </div>
     );

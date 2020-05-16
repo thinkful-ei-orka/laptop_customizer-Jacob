@@ -5,12 +5,13 @@ import PartList from './PartList'
 
 export default function CustomList(props) {
     let keys = Object.keys(props.features)
-
+    // key={slugify(JSON.stringify(item))
     return (
       <form className="main__form">
           <h2>Customize your laptop</h2>
           {keys.map((feature, idx) =>
           <PartList
+            key={feature + '-' + idx}
             id={idx}
             feature={feature}
             features={props.features}

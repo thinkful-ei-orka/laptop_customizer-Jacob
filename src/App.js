@@ -132,6 +132,8 @@ class App extends Component {
         />
         <Cart 
           selected={this.state.selected}
+          feature={this.props.features}
+          
         />
           {/* <section className="main__summary">
             <h2>Your cart</h2>

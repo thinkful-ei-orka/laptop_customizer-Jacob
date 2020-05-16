@@ -6,6 +6,12 @@ export default function CartItem(props) {
         currency: 'USD'
       });
     return (
-        <div>This is each selected part in the cart</div>
+        <div className="summary__option" >
+          <div className="summary__option__label">{props.feature} </div>
+          <div className="summary__option__value">{props.selectedOption.name}</div>
+          <div className="summary__option__cost">
+            {USCurrencyFormat.format(props.selectedOption.cost)}
+          </div>
+        </div>
     )
 }

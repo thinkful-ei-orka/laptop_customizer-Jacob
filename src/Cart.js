@@ -12,6 +12,7 @@ export default function Cart(props) {
             {keys.map((feature, index) => 
                 <CartItem
                     key={feature + '-' + index}
+                    id={index}
                     feature={feature}
                     selectedOption={props.selected[feature]}
                 />

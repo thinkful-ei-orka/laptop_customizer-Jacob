@@ -6,11 +6,13 @@ import slugify from 'slugify'
 
 export default function PartList(props) {
     console.log(props.features[props.feature])
-
+    const featureHash = props.feature + '-' + props.id
 
     return (
-        <div className="feature_item">
-            <h2>{props.feature}</h2>
+        <fieldset className="feature" key={featureHash}>
+            <legend className="feature_name">
+                <h3>{props.feature}</h3>
+            </legend>
             {props.features[props.feature].map(item =>
                 <Part
                     key={slugify(JSON.stringify(item))}
@@ -22,7 +24,7 @@ export default function PartList(props) {
 
                 />
             )}
-        </div>
+        </fieldset>
    ) 
 }
 

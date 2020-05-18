@@ -6,7 +6,7 @@ export default function CartItem(props) {
         currency: 'USD'
       });
     return (
-        <div className="summary__option" >
+        <div className="summary__option" key={props.feature + '-' + props.id}>
           <div className="summary__option__label">{props.feature} </div>
           <div className="summary__option__value">{props.selectedOption.name}</div>
           <div className="summary__option__cost">

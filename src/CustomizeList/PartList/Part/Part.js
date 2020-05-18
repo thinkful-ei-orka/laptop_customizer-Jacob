@@ -1,5 +1,6 @@
 import React from 'react'
 import slugify from 'slugify'
+import './Part.css'
 
 export default function Part(props) {
     const itemHash = slugify(JSON.stringify(props.item));

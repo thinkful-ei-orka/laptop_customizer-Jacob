@@ -5,9 +5,9 @@ import React, { Component } from 'react';
 import slugify from 'slugify';
 
 import './App.css';
-import CustomList from './CustomList'
-import Header from './Header'
-import Cart from './Cart'
+import CustomList from './CustomizeList/CustomList'
+import Header from './Header/Header'
+import Cart from './Cart/Cart'
 
 const USCurrencyFormat = new Intl.NumberFormat('en-US', {
   style: 'currency',

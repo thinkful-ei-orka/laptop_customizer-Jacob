@@ -1,6 +1,10 @@
 import React from 'react'
-import Part from './Part'
+import Part from './Part/Part'
 import slugify from 'slugify'
+import './PartList.css'
+
+
+
 
 
 

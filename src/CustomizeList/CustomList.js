@@ -1,5 +1,6 @@
 import React from 'react'
-import PartList from './PartList'
+import PartList from './PartList/PartList'
+import './CustomList.css'
 
 
 

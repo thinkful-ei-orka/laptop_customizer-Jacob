@@ -1,4 +1,5 @@
 import React from 'react'
+import './CartItem.css'
 
 export default function CartItem(props) {
     const USCurrencyFormat = new Intl.NumberFormat('en-US', {
